@@ -1,0 +1,27 @@
+{
+  "name": "trabajo.practico-express-validator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daiana45/practica-tasks-Bogado-Daiana-relaciones.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Daiana45/practica-tasks-Bogado-Daiana-relaciones/issues"
+  },
+  "homepage": "https://github.com/Daiana45/practica-tasks-Bogado-Daiana-relaciones#readme",
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.5",
+    "sequelize": "^6.37.8"
+  }
+}
