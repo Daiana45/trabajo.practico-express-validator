@@ -1,4 +1,4 @@
-import { PersonModel } from "../models/person.model.js";
+// no lo usamos aun import { PersonModel } from "../models/person.model.js";
 import {Task} from "../models/task.model.js"
 import { UserModel } from "../models/user.model.js";
 
@@ -6,7 +6,7 @@ export const createTask = async(req, res) => {
     try{
         const {title, description, isComplete, user_id} = req.body; //agregamos user_id porque el cliente tiene que decirnos que usuario creo la tarea
 
-        const user = await UserModel.findByPk(user_id); //busca el usuario con ese id, hace una consulta.
+        const user = await UserModel.findByPk(user_id); //busca el usuario con ese id, hace una consulta. //es una comprobacion previa a crear la relacion.
 
         //comprobamos si existe
         if(!user) {
@@ -26,7 +26,7 @@ export const getTask = async(req, res) => {
             include:[ //ademas de las tareas quiero informacion relacionada
                 {
                     model: UserModel, //tiene que ser el modelo
-                    as: "author", //debe ser el id,
+                    as: "author", //debe ser el alias,
                     attributes: {
                         exclude: ["password", "person_id"], //para excluir
                     },
@@ -41,7 +41,7 @@ export const getTask = async(req, res) => {
            //attributes:["title", "description"] 
           // exclude: ["description"] o de esta manera
         }); //al findall hay que decirle que tambien traiga las relaciones.
-        return res.status(201).json(task);
+        return res.status(200).json(task);
     } catch(error){
         return res.status(500).json({message:"error del servidor", error: error.message});
     }
@@ -55,7 +55,7 @@ export const getTasksById = async(req, res) => {
         //solo para una sola tarea.
         include:[
             {
-                modelo: UserModel,
+                model: UserModel,
                 as: "author",
                 attributes:{
                     exclude:["password", "person_id"],
@@ -66,7 +66,7 @@ export const getTasksById = async(req, res) => {
         if (!task) {
             return res.status(404).json({message:"tarea no encontrada"});
         } 
-        return res.status(201).json(task);
+        return res.status(200).json(task);
     } catch(error){
         return res.status(500).json({message:"error al obtener la tarea", error: error.message});
     }

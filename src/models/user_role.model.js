@@ -36,7 +36,7 @@ UserModel.belongsToMany(RoleModel,{
 } );
 
 RoleModel.belongsToMany(UserModel,{
-    through: UserRoleModel,
+    through: UserRoleModel, //le indica a sequeliza que para relacionar userModel y RoleModel urilisa userrolemodel como tabla intermedia
     foreignKey: "role_id",
     as: "users",
 });

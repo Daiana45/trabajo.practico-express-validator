@@ -44,7 +44,7 @@ export const createRole = async (req, res) => {
 
 export const getRoles = async (req, res) => {
     try {
-        const roles = await RoleModel.findAll({
+        const roles = await RoleModel.findAll({ //las relaciones de muchod s muvhod
             attributes: ["id", "name"],
             include: [
                 {

@@ -43,10 +43,11 @@ export const createTaskValidation = [
 ];
 
 export const updateTaskValidation = [
-    param("id")
-        .isInt({ min: 1 })
+    //validar parametros de url
+    param("id") //calida los parametros que vienen en la ruta
+        .isInt({ min: 1 }) //comprueba que sea un entero mayor o igual a uno
         .withMessage("el id debe ser un entero positivo")
-        .custom(async (id) => {
+        .custom(async (id) => { //consulta la base de ddatos para comprobar que la tarea exista
             const task = await Task.findByPk(id);
 
             if (!task) {
@@ -57,7 +58,7 @@ export const updateTaskValidation = [
         }),
 
     body("title")
-        .optional()
+        .optional() //campos que pyeden faltar
         .notEmpty()
         .withMessage("el titulo no debe estar vacio")
         .isLength({ max: 100 })

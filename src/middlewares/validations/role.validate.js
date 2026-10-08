@@ -8,8 +8,8 @@ export const createRoleValidation = [
         .isLength({ max: 50 })
         .withMessage("el nombre del rol no puede superar los 50 caracteres")
         .custom(async (name) => {
-            const role = await RoleModel.findOne({
-                where: { name }
+            const role = await RoleModel.findOne({ //role recibe el nombre del rol que se esta validando y findone busca si ya existe
+                where: { name } 
             });
 
             if (role) {

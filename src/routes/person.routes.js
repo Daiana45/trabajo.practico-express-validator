@@ -23,4 +23,4 @@ personRouter.post(
 personRouter.get(
     "/persons",
     getPersons
-);
+); //aca no necesita validate porqur no esta recibiendo datos que tenga que validar mediante body()

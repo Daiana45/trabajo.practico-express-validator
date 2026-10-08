@@ -13,6 +13,7 @@ export const createPersonValidation = [
         .withMessage("el apellido no debe estar vacio")
         .isLength({ max: 100 })
         .withMessage("el apellido no puede superar los 100 caracteres")
+        //.custom() permite crear una regla de validacion personalizada, async permite esperar la consulta, lastname el valor, {re} permite acceder a la peticion completa, findone busca una persona y trhow ner error() hace que registre un error si ya existe una persona, return true la validacion paso correctamente
         .custom(async (Lastname, { req }) => {
             const person = await PersonModel.findOne({
                 where: {

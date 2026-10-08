@@ -30,7 +30,7 @@ export const createPerson = async (req, res) => {
 
         if (existingPerson) {
             return res.status(400).json({
-                message: "el apellido ya esta registrado",
+                message: "la persona ya esta registrado",
             });
         }
 

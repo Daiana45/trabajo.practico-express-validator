@@ -21,7 +21,7 @@ export const UserModel = sequelize.define(
         person_id:{
             type: DataTypes.INTEGER,
             allowNull:false,
-            unique: true,
+            unique: true, //significa que una misma persona no puede aparecer como person_id en dos usuarios distintos
             references:{
                 model: "Person",
                 key: "id",

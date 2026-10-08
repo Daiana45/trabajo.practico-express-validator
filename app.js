@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/api",userRouter); //si recibe dos parametros primero recibe el de la ruta
 app.use("/api", taskRoutes);
 app.use("/api", personRouter);
-app.use("/api", roleRouter);
+app.use("/api/tasks", roleRouter); //porque llevan "/id"
 
 app.listen (PUERTO, async() => {
     await startDB()
